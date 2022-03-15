@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style_main.css">
+    <title>Computex</title>
+</head>
+<body>
+    <!-- NAVBAR: HOME E EXIT -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./assets/logotipo.png" width="40" height="40" class="d-inline" alt="" />
+                    Colégio Computex
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false"
+                    aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- BOTÃO DE SAIR -->
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-link" href="paginaInicial.html">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- PERFIL-->
+    <main id="Home">
+    <div class="Homepage" style="width: 100%; height: 100%;">
+        <div id="container-perfil" class="container">
+            <div id="row-perfil" class="row">
+                <div id="colunaEsquerda-perfil" class="col-3">
+                    <div id="card-perfil-logo" class="card">
+                        <img class="card-img-top" src="./assets/logotipo.png" alt="Logo da Escola" />
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" style="margin-bottom: 20px">
+                        Acessar seus dados
+                    </button>
+                </div>
+
+                <div id="colunaDireita-perfil" class="col-5">
+                    <img class="card-img rounded w-50" src="./assets/logotipo.png" alt="Foto do Aluno" />
+                    <h5>NOME DO ALUNO</h5>
+                    <p>Turma: 2º Ano A | Turno: M</p>
+                </div>
+            </div>
+        </div>
+        <!-- GRUPO DE BOTÕES DO MENU -->
+        <div class="container GBM">
+            <div class="row GBM">
+                <!-- BOTÃO PRÉ-MATRÍCULA -->
+                <div>
+                    <a href="#pre-matricula" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone pré-matrícula" />
+                            </div>
+                            <div class="label">Pré-matrícula</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO HORÁRIO -->
+                <div>
+                    <a href="json_horario_aluno.php" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Horário" />
+                            </div>
+                            <div class="label">Horário</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO AGENDA -->
+                <div>
+                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Agenda" />
+                            </div>
+                            <div class="label">Agenda</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO CHAT 2021 -->
+                <div>
+                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Chat 2021" />
+                            </div>
+                            <div class="label">Chat 2021</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Boletos -->
+                <div>
+                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Boletos" />
+                            </div>
+                            <div class="label">Boletos</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO IRPF -->
+                <div>
+                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone IRPF" />
+                            </div>
+                            <div class="label">IRPF</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Boletim -->
+                <div>
+                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Boletim" />
+                            </div>
+                            <div class="label">Boletim</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Conteúdo Programático -->
+                <div>
+                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Conteúdo Programático" />
+                            </div>
+                            <div class="label">Conteúdo Programático</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Calendário -->
+                <div>
+                    <a href="#Calendario" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Calendário" />
+                            </div>
+                            <div class="label">Calendário</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Colônia de Férias -->
+                <div>
+                    <a href="#colonia-de-ferias" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Colônia de Férias" />
+                            </div>
+                            <div class="label">Colônia de Férias</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Material Didático -->
+                <div>
+                    <a href="#material-didatico" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Material Didático" />
+                            </div>
+                            <div class="label">Material Didático</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Ocorrências -->
+                <div>
+                    <a href="#ocorrencias" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Ocorrências" />
+                            </div>
+                            <div class="label">Ocorrências</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Biblioteca -->
+                <div>
+                    <a href="#Biblioteca" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Biblioteca" />
+                            </div>
+                            <div class="label">Biblioteca</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Acessos -->
+                <div>
+                    <a href="#Acessos" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Acessos" />
+                            </div>
+                            <div class="label">Acessos</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Chat Externo -->
+                <div>
+                    <a href="#Chat-Externo" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Chat Externo" />
+                            </div>
+                            <div class="label">Chat Externo</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Ensino Médio II -->
+                <div>
+                    <a href="#ensino-II" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div>
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Ensino Médio II" />
+                            </div>
+                            <div class="label">Ensino Médio II</div>
+                        </figure>
+                    </a>
+                </div>
+                <!-- BOTÃO Senha -->
+                <div>
+                    <a href="#senha" class="btn btn-primary btn-custom GBM">
+                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                            <div style="align-items: center;">
+                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
+                                    alt="Icone Senha" />
+                            </div>
+                            <div class="label">Senha</div>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
