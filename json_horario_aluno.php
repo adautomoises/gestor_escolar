@@ -18,13 +18,12 @@ foreach ($array["horario"] as $dia) {
     $select = "SELECT * FROM escola.horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
-    if($row){
+    if ($row) {
       break;
     }
     $insert = "INSERT INTO horarios (dia, escola, codigo_serie, serie, turno, turma, codigo_disciplina, disciplina, inicio, fim, professor) 
-    VALUE ('" . $dia["dia"] . "','" . $horario["escola"] . "','" . $horario["codigo_serie"] . "','" . $horario["serie"] . "','" . $horario["turno"] . "','" . $horario["turma"] . "','" . $horario["codigo_disciplina"] . "','" . $horario["disciplina"] . "','" . $horario["inicio"] . "','" . $horario["fim"] . "','" . $horario["professor"]. "');";
+    VALUE ('" . $dia["dia"] . "','" . $horario["escola"] . "','" . $horario["codigo_serie"] . "','" . $horario["serie"] . "','" . $horario["turno"] . "','" . $horario["turma"] . "','" . $horario["codigo_disciplina"] . "','" . $horario["disciplina"] . "','" . $horario["inicio"] . "','" . $horario["fim"] . "','" . $horario["professor"] . "');";
     mysqli_query($connect, $insert);
-    
   }
 }
 $grade = [];
@@ -34,7 +33,7 @@ foreach ($array["horario"] as $dia) {
     $select = "SELECT disciplina, professor FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
-    if($row){
+    if ($row) {
       array_push($grade, $row);
     }
   }
@@ -86,33 +85,56 @@ foreach ($array["horario"] as $dia) {
       <div class="title">
         <h1>Horário</h1>
       </div>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <!-- <th></th> -->
-            <th class="semana" scope="col">
-              <div class="dias">Segunda-feira</div>
-            </th>
-            <th class="semana" scope="col">
-              <div class="dias">Terça-feira</div>
-            </th>
-            <th class="semana" scope="col">
-              <div class="dias">Quarta-feira</div>
-            </th>
-            <th class="semana" scope="col">
-              <div class="dias">Quinta-feira</div>
-            </th>
-            <th class="semana" scope="col">
-              <div class="dias">Sexta-feira</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
+      <table class="table table-hover">
+        <tbody class="tabela">
+          <tr class="coluna">
             <?php
-                for ($i=0; $i < 20; $i++) { 
-                  echo "<td>".$grade[$i]['disciplina']."".$grade[$i]['professor']."</td>";
-                }
+            echo "<th class='semana' scope='col'>
+              <div class='dias'>Segunda-feira</div>
+            </th>";
+            for ($i = 0; $i < 4; $i++) {
+              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+            }
+            ?>
+          </tr>
+          <tr class="coluna">
+            <?php
+            echo "<th class='semana' scope='col'>
+              <div class='dias'>Terça-feira</div>
+            </th>";
+            for ($i = 4; $i < 8; $i++) {
+              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+            }
+            ?>
+          </tr>
+          <tr class="coluna">
+            <?php
+            echo "<th class='semana' scope='col'>
+              <div class='dias'>Quarta-feira</div>
+            </th>";
+            for ($i = 8; $i < 12; $i++) {
+              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+            }
+            ?>
+          </tr>
+          <tr class="coluna">
+            <?php
+            echo "<th class='semana' scope='col'>
+              <div class='dias'>Quinta-feira</div>
+            </th>";
+            for ($i = 12; $i < 16; $i++) {
+              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+            }
+            ?>
+          </tr>
+          <tr class="coluna">
+            <?php
+            echo "<th class='semana' scope='col'>
+              <div class='dias'>Sexta-feira</div>
+            </th>";
+            for ($i = 16; $i < 20; $i++) {
+              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+            }
             ?>
           </tr>
         </tbody>
