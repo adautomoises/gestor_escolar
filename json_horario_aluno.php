@@ -5,7 +5,7 @@ if (mysqli_connect_errno()) {
   echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
   exit();
 } else {
-  echo "Conectado ao MySQL <br> ";
+  // echo "Conectado ao MySQL <br> ";
 }
 
 #UTILIZAR A FUNÇÃO GET PARA RECEBER OS DADOS
@@ -39,15 +39,13 @@ foreach ($array["horario"] as $dia) {
     }
   }
 }
+
 // echo '<pre>';
 // print_r($grade);
 // echo '</pre>';
 
 
-// echo 'Dados inseridos no banco de dados.';
-
-
-mysqli_close($connect);
+// mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +62,7 @@ mysqli_close($connect);
 
 <body>
   <!-- NAVBAR: HOME E EXIT -->
-  <!-- <header>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -74,7 +72,7 @@ mysqli_close($connect);
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
-        BOTÃO DE SAIR 
+        <!-- BOTÃO DE SAIR  -->
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           <div class="navbar-nav ml-auto">
             <a class="nav-link" href="paginaInicial.html">Sair</a>
@@ -82,7 +80,7 @@ mysqli_close($connect);
         </div>
       </div>
     </nav>
-  </header> -->
+  </header>
   <main>
     <div id="container-tabela" class="container">
       <div class="title">
@@ -91,7 +89,7 @@ mysqli_close($connect);
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th></th>
+            <!-- <th></th> -->
             <th class="semana" scope="col">
               <div class="dias">Segunda-feira</div>
             </th>
@@ -111,82 +109,15 @@ mysqli_close($connect);
         </thead>
         <tbody>
           <tr>
-            <th class="horarios" scope="row">07:20 a 08:10</th>
-            <td>
-              <div class="materia">1</div>
-            </td>
-            <td>
-              <div class="materia">2</div>
-            </td>
-            <td>
-              <div class="materia">3</div>
-            </td>
-            <td>
-              <div class="materia">4</div>
-            </td>
-            <td>
-              <div class="materia">5</div>
-            </td>
-          </tr>
-          <tr>
-            <th class="horarios" scope="row">08:10 a 09:00</th>
-            <td>
-              <div class="materia">1</div>
-            </td>
-            <td>
-              <div class="materia">2</div>
-            </td>
-            <td>
-              <div class="materia">3</div>
-            </td>
-            <td>
-              <div class="materia">4</div>
-            </td>
-            <td>
-              <div class="materia">5</div>
-            </td>
-          </tr>
-          <tr>
-            <th class="horarios" scope="row">09:00 a 09:30</th>
-            <td colspan="5">
-              <div class="linha-intervalo">Intervalo</div>
-            </td>
-          </tr>
-          <tr>
-            <th class="horarios" scope="row">09:30 a 10:20</th>
-            <td>
-              <div class="materia">1</div>
-            </td>
-            <td>
-              <div class="materia">2</div>
-            </td>
-            <td>
-              <div class="materia">3</div>
-            </td>
-            <td>
-              <div class="materia">4</div>
-            </td>
-            <td>
-              <div class="materia">5</div>
-            </td>
-          </tr>
-          <tr>
-            <th class="horarios" scope="row">10:20 a 11:05</th>
-            <td>
-              <div class="materia">1</div>
-            </td>
-            <td>
-              <div class="materia">2</div>
-            </td>
-            <td>
-              <div class="materia">3</div>
-            </td>
-            <td>
-              <div class="materia">4</div>
-            </td>
-            <td>
-              <div class="materia">5</div>
-            </td>
+            <?php                 
+                $select = "SELECT disciplina, professor FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
+                $result = mysqli_query($connect, $select);                
+                if ($result->num_rows >= 0) {                     
+                    while ($row = $result->fetch_array()) {                       
+                        echo "<td>".$row['disciplina']."".$row['professor']."</td>";
+                    }
+                  }
+            ?>
           </tr>
         </tbody>
       </table>
