@@ -51,13 +51,13 @@ body {
     align-items: center;
 }
 /* botão */
-.btn btn-primary btn-custom GBM {
+.btn.btn-primary.btn-custom.GBM {
     margin: 5px;
     width: 250px;
     
 }
 /* icone do botão */
-.figure-img img-fluid rounded GBM {
+.figure-img.img-fluid.rounded.GBM {
     margin: 0;
     width: 24px;
     height: 24px;
@@ -65,7 +65,7 @@ body {
 .label{
     width: 200px;
 }
-.row GBM{
+.row.GBM{
     display: flex;
     flex-direction: row;
     justify-content: center;

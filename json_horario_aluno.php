@@ -109,14 +109,10 @@ foreach ($array["horario"] as $dia) {
         </thead>
         <tbody>
           <tr>
-            <?php                 
-                $select = "SELECT disciplina, professor FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
-                $result = mysqli_query($connect, $select);                
-                if ($result->num_rows >= 0) {                     
-                    while ($row = $result->fetch_array()) {                       
-                        echo "<td>".$row['disciplina']."".$row['professor']."</td>";
-                    }
-                  }
+            <?php
+                for ($i=0; $i < 20; $i++) { 
+                  echo "<td>".$grade[$i]['disciplina']."".$grade[$i]['professor']."</td>";
+                }
             ?>
           </tr>
         </tbody>
