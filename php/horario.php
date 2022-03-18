@@ -55,7 +55,7 @@ foreach ($array["horario"] as $dia) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="style_horario.css">
+  <link rel="stylesheet" href="../styles/style_horario.css">
   <title>Computex</title>
 </head>
 
@@ -64,8 +64,8 @@ foreach ($array["horario"] as $dia) {
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="./assets/logotipo.png" width="40" height="40" class="d-inline" alt="" />
+        <a class="navbar-brand" href="../index.html">
+          <img src="../assets/logotipo.png" width="40" height="40" class="d-inline" alt="" />
           Colégio Computex
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
