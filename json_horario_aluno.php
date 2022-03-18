@@ -88,12 +88,12 @@ foreach ($array["horario"] as $dia) {
       <table class="table table-hover">
         <tbody class="tabela">
           <tr class="coluna">
-            <?php
-            echo "<th class='semana' scope='col'>
+            <th class='semana' scope='col'>
               <div class='dias'>Segunda-feira</div>
-            </th>";
+            </th>
+            <?php
             for ($i = 0; $i < 4; $i++) {
-              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -103,7 +103,7 @@ foreach ($array["horario"] as $dia) {
               <div class='dias'>Terça-feira</div>
             </th>";
             for ($i = 4; $i < 8; $i++) {
-              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -113,7 +113,7 @@ foreach ($array["horario"] as $dia) {
               <div class='dias'>Quarta-feira</div>
             </th>";
             for ($i = 8; $i < 12; $i++) {
-              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -123,7 +123,7 @@ foreach ($array["horario"] as $dia) {
               <div class='dias'>Quinta-feira</div>
             </th>";
             for ($i = 12; $i < 16; $i++) {
-              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -133,7 +133,7 @@ foreach ($array["horario"] as $dia) {
               <div class='dias'>Sexta-feira</div>
             </th>";
             for ($i = 16; $i < 20; $i++) {
-              echo "<td>" . $grade[$i]['disciplina'] . "" . $grade[$i]['professor'] . "</td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>

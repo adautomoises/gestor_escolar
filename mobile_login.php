@@ -7,10 +7,30 @@
     } else {
     // echo "Conectado ao MySQL <br> ";
     }
-
-    $filename = "http://camerascomputex.ddns.net:8080/escola/mobile_login.php?matricula=2011004&senha=99999999&token=X&so=ios";
+    $matricula = '2011004';
+    $params = array('matricula'=> $matricula, 'senha'=> '99999999','token'=>'X', 'so'=>'ios');
+    
+    $filename = "http://camerascomputex.ddns.net:8080/escola/mobile_login.php?". http_build_query($params);
     $data = file_get_contents($filename);
     $array = json_decode($data, true);
+
+    // echo '<pre>';
+    // print_r($array);
+    // echo '<pre>';
+    // exit;
+    
+    foreach($array as $key){
+        $select = "SELECT * FROM dados_aluno WHERE matricula LIKE '" . $array["matricula"] . "';";
+        $result = mysqli_query($connect, $select);
+        $row = mysqli_fetch_assoc($result);
+      if ($row) {
+        break;
+      }
+        $insert = "INSERT INTO dados_aluno(ano, codigo_escola, serie, turma, turno, escola, matricula, nome, tipo_usuario, tipo_acesso, nascimento, qtd_notes, boletim, infantil)
+        VALUE ('".$array["ano"]."','".$array["codigo_escola"]."','".$array["serie"]."','".$array["turma"]."','".$array["turno"]."','".$array["escola"]."','".$array["matricula"]."','".$array["nome"]."','".$array["tipo_usuario"]."','".$array["tipo_acesso"]."','".$array["nascimento"]."','".$array["qtd_notes"]."','".$array["boletim"]."','".$array["infantil"]."');";
+        mysqli_query($connect, $insert);
+    }
+    
 
 
     // #IDENTIFICAR SE A KEY DO ARRAY PAI É UMA ARRAY;
@@ -30,16 +50,15 @@
     //     echo "NOME DA CHAVE = ".$key."<br>";
     // }
 
+
     // #PERCORRER OS KEY's QUE SÃO ARRAYS;
-    // foreach($array['NOME DA CHAVE'] as $key => $value){
+    // foreach($array['config'] as $key => $value){
     //     #RETORNA O ARRAY FILHO COM CHAVE E VALOR (OK!);
     //     echo $key." = ".$value."<br>";
     // }
 
 
-    // echo '<pre>';
-    // print_r($array);
-    // echo '</pre>';
+    
 ?>
 
 <!doctype html>
@@ -55,7 +74,12 @@
     <title>Computex</title>
   </head>
   <body>
+    <?php
+
+      
     
+    
+    ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

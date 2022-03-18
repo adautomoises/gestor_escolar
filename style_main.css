@@ -50,14 +50,17 @@ body {
     display: flex;
     align-items: center;
 }
+/* Botão acesse seus dados */
+.btn.btn-outline-primary.btn-custom {
+    padding: 0.375rem 0.5rem;
+}
 /* botão */
-.btn.btn-primary.btn-custom.GBM {
+.btn.btn-primary.btn-custom {
     margin: 5px;
     width: 250px;
-    
 }
 /* icone do botão */
-.figure-img.img-fluid.rounded.GBM {
+.figure-img.img-fluid.rounded {
     margin: 0;
     width: 24px;
     height: 24px;
@@ -65,7 +68,7 @@ body {
 .label{
     width: 200px;
 }
-.row.GBM{
+.row{
     display: flex;
     flex-direction: row;
     justify-content: center;

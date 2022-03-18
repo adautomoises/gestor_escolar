@@ -12,14 +12,16 @@ table {
     border-spacing: 0.5rem 0.75rem;
     justify-content: center;
 }
-.horarios, .dias, .materia, .title, .tabela, .linha-intervalo{
+.dias, .materia, .title, .tabela, .linha-intervalo{
     display: flex;
     justify-content: center;
-}
-.horarios, .semana{
-    background-color: rgb(235, 235, 235);
 }
 .coluna{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+.col.horario{
+    display: flex;
+    justify-content: center;
 }

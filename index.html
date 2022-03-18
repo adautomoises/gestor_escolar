@@ -34,16 +34,35 @@
     </header>
     <!-- PERFIL-->
     <main id="Home">
-    <div class="Homepage" style="width: 100%; height: 100%;">
+    <div class="Homepage">
         <div id="container-perfil" class="container">
             <div id="row-perfil" class="row">
                 <div id="colunaEsquerda-perfil" class="col-3">
                     <div id="card-perfil-logo" class="card">
                         <img class="card-img-top" src="./assets/logotipo.png" alt="Logo da Escola" />
                     </div>
-                    <button type="button" class="btn btn-outline-primary" style="margin-bottom: 20px">
-                        Acessar seus dados
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-primary btn-custom " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Acesse seus dados
                     </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Dados do Usuário</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="colunaDireita-perfil" class="col-5">
@@ -54,212 +73,212 @@
             </div>
         </div>
         <!-- GRUPO DE BOTÕES DO MENU -->
-        <div class="container GBM">
-            <div class="row GBM">
-                <!-- BOTÃO PRÉ-MATRÍCULA -->
-                <div>
-                    <a href="#pre-matricula" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone pré-matrícula" />
-                            </div>
-                            <div class="label">Pré-matrícula</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO HORÁRIO -->
-                <div>
-                    <a href="json_horario_aluno.php" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Horário" />
-                            </div>
-                            <div class="label">Horário</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO AGENDA -->
-                <div>
-                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Agenda" />
-                            </div>
-                            <div class="label">Agenda</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO CHAT 2021 -->
-                <div>
-                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Chat 2021" />
-                            </div>
-                            <div class="label">Chat 2021</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Boletos -->
-                <div>
-                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Boletos" />
-                            </div>
-                            <div class="label">Boletos</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO IRPF -->
-                <div>
-                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone IRPF" />
-                            </div>
-                            <div class="label">IRPF</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Boletim -->
-                <div>
-                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Boletim" />
-                            </div>
-                            <div class="label">Boletim</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Conteúdo Programático -->
-                <div>
-                    <a href="#horarios" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Conteúdo Programático" />
-                            </div>
-                            <div class="label">Conteúdo Programático</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Calendário -->
-                <div>
-                    <a href="#Calendario" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Calendário" />
-                            </div>
-                            <div class="label">Calendário</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Colônia de Férias -->
-                <div>
-                    <a href="#colonia-de-ferias" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Colônia de Férias" />
-                            </div>
-                            <div class="label">Colônia de Férias</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Material Didático -->
-                <div>
-                    <a href="#material-didatico" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Material Didático" />
-                            </div>
-                            <div class="label">Material Didático</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Ocorrências -->
-                <div>
-                    <a href="#ocorrencias" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Ocorrências" />
-                            </div>
-                            <div class="label">Ocorrências</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Biblioteca -->
-                <div>
-                    <a href="#Biblioteca" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Biblioteca" />
-                            </div>
-                            <div class="label">Biblioteca</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Acessos -->
-                <div>
-                    <a href="#Acessos" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Acessos" />
-                            </div>
-                            <div class="label">Acessos</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Chat Externo -->
-                <div>
-                    <a href="#Chat-Externo" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Chat Externo" />
-                            </div>
-                            <div class="label">Chat Externo</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Ensino Médio II -->
-                <div>
-                    <a href="#ensino-II" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div>
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Ensino Médio II" />
-                            </div>
-                            <div class="label">Ensino Médio II</div>
-                        </figure>
-                    </a>
-                </div>
-                <!-- BOTÃO Senha -->
-                <div>
-                    <a href="#senha" class="btn btn-primary btn-custom GBM">
-                        <figure id="figure-caixa-botoes" class="caixa-botoes">
-                            <div style="align-items: center;">
-                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded GBM"
-                                    alt="Icone Senha" />
-                            </div>
-                            <div class="label">Senha</div>
-                        </figure>
-                    </a>
-                </div>
+        <div class="container">
+            <div class="row row-cols-auto">
+                                <!-- BOTÃO PRÉ-MATRÍCULA -->
+                                <div class="">
+                                    <a href="#pre-matricula" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone pré-matrícula" />
+                                            </div>
+                                            <div class="label">Pré-matrícula</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO HORÁRIO -->
+                                <div class="">
+                                    <a href="json_horario_aluno.php" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Horário" />
+                                            </div>
+                                            <div class="label">Horário</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO AGENDA -->
+                                <div class="">
+                                    <a href="#agenda" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Agenda" />
+                                            </div>
+                                            <div class="label">Agenda</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO CHAT 2021 -->
+                                <div>
+                                    <a href="#chat-2021" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Chat 2021" />
+                                            </div>
+                                            <div class="label">Chat 2021</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Boletos -->
+                                <div>
+                                    <a href="#boletos" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Boletos" />
+                                            </div>
+                                            <div class="label">Boletos</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO IRPF -->
+                                <div>
+                                    <a href="#irpf" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone IRPF" />
+                                            </div>
+                                            <div class="label">IRPF</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Boletim -->
+                                <div>
+                                    <a href="#boletim" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Boletim" />
+                                            </div>
+                                            <div class="label">Boletim</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Conteúdo Programático -->
+                                <div>
+                                    <a href="#conteudo-programatico" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Conteúdo Programático" />
+                                            </div>
+                                            <div class="label">Conteúdo Programático</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Calendário -->
+                                <div>
+                                    <a href="#calendario" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Calendário" />
+                                            </div>
+                                            <div class="label">Calendário</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Colônia de Férias -->
+                                <div>
+                                    <a href="#colonia-de-ferias" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Colônia de Férias" />
+                                            </div>
+                                            <div class="label">Colônia de Férias</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Material Didático -->
+                                <div>
+                                    <a href="#material-didatico" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Material Didático" />
+                                            </div>
+                                            <div class="label">Material Didático</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Ocorrências -->
+                                <div>
+                                    <a href="#ocorrencias" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Ocorrências" />
+                                            </div>
+                                            <div class="label">Ocorrências</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Biblioteca -->
+                                <div>
+                                    <a href="#biblioteca" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Biblioteca" />
+                                            </div>
+                                            <div class="label">Biblioteca</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Acessos -->
+                                <div>
+                                    <a href="#acessos" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Acessos" />
+                                            </div>
+                                            <div class="label">Acessos</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Chat Externo -->
+                                <div>
+                                    <a href="#chat-externo" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Chat Externo" />
+                                            </div>
+                                            <div class="label">Chat Externo</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Ensino Médio II -->
+                                <div>
+                                    <a href="#ensino2" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div>
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Ensino Médio II" />
+                                            </div>
+                                            <div class="label">Ensino Médio II</div>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- BOTÃO Senha -->
+                                <div>
+                                    <a href="#senha" class="btn btn-primary btn-custom">
+                                        <figure id="figure-caixa-botoes" class="caixa-botoes">
+                                            <div style="align-items: center;">
+                                                <img src="./assets/logotipo.png" class="figure-img img-fluid rounded"
+                                                    alt="Icone Senha" />
+                                            </div>
+                                            <div class="label">Senha</div>
+                                        </figure>
+                                    </a>
+                                </div>
             </div>
         </div>
     </div>
@@ -277,3 +296,5 @@
 </body>
 
 </html>
+
+
