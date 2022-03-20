@@ -8,8 +8,9 @@ if (mysqli_connect_errno()) {
   // echo "Conectado ao MySQL <br> ";
 }
 
-#UTILIZAR A FUNÇÃO GET PARA RECEBER OS DADOS
-$filename = "http://camerascomputex.ddns.net:8080/escola/json_horario_aluno.php?matricula=2011004&senha=99999999&ano=20211";
+$params = array('matricula'=>'2011004', 'senha' => '99999999', 'ano'=>'20211');
+
+$filename = "http://camerascomputex.ddns.net:8080/escola/json_horario_aluno.php?". http_build_query($params);
 $data = file_get_contents($filename);
 $array = json_decode($data, true);
 
@@ -64,19 +65,14 @@ foreach ($array["horario"] as $dia) {
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="../index.html">
-          <img src="../assets/logotipo.png" width="40" height="40" class="d-inline" alt="" />
+        <a class="navbar-brand" href="../index.php">
+          <img src="../assets/images/logotipo.png" width="40" height="40" class="d-inline" alt="" />
           Colégio Computex
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- BOTÃO DE SAIR  -->
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <!-- BOTÃO DE SAIR -->
           <div class="navbar-nav ml-auto">
             <a class="nav-link" href="paginaInicial.html">Sair</a>
           </div>
-        </div>
       </div>
     </nav>
   </header>
@@ -98,40 +94,40 @@ foreach ($array["horario"] as $dia) {
             ?>
           </tr>
           <tr class="coluna">
-            <?php
-            echo "<th class='semana' scope='col'>
+            <th class='semana' scope='col'>
               <div class='dias'>Terça-feira</div>
-            </th>";
+            </th>
+            <?php
             for ($i = 4; $i < 8; $i++) {
               echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
           <tr class="coluna">
-            <?php
-            echo "<th class='semana' scope='col'>
+            <th class='semana' scope='col'>
               <div class='dias'>Quarta-feira</div>
-            </th>";
+            </th>
+            <?php
             for ($i = 8; $i < 12; $i++) {
               echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
           <tr class="coluna">
-            <?php
-            echo "<th class='semana' scope='col'>
+            <th class='semana' scope='col'>
               <div class='dias'>Quinta-feira</div>
-            </th>";
+            </th>
+            <?php
             for ($i = 12; $i < 16; $i++) {
               echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }
             ?>
           </tr>
           <tr class="coluna">
-            <?php
-            echo "<th class='semana' scope='col'>
+            <th class='semana' scope='col'>
               <div class='dias'>Sexta-feira</div>
-            </th>";
+            </th>
+            <?php
             for ($i = 16; $i < 20; $i++) {
               echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
             }

@@ -11,13 +11,13 @@
     $btn[0]->image = "./assets/images/logotipo.png";
     $btn[0]->label = "Pré-Matrícula";
     $btn[1] = new objetos();
-    $btn[1]->link = "horarios.php";
+    $btn[1]->link = "pages\horario.php";
     $btn[1]->image = "./assets/images/logotipo.png";
     $btn[1]->label = "Horários";
     $btn[2] = new objetos();
-    $btn[2]->link = "Agenda";
+    $btn[2]->link = "pages/turmas.php";
     $btn[2]->image = "./assets/images/logotipo.png";
-    $btn[2]->label = "Agenda";
+    $btn[2]->label = "Turmas";
     $btn[3] = new objetos();
     $btn[3]->link = "Chat-2021";
     $btn[3]->image = "./assets/images/logotipo.png";

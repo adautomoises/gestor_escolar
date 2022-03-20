@@ -22,7 +22,7 @@
       if ($row) {
         break;
       }
-        $insert = "INSERT INTO dados_aluno(ano, codigo_escola, serie, turma, turno, escola, matricula, nome, tipo_usuario, tipo_acesso, nascimento, qtd_notes, boletim, infantil)
+        $insert = "INSERT INTO dados_aluno (ano, codigo_escola, serie, turma, turno, escola, matricula, nome, tipo_usuario, tipo_acesso, nascimento, qtd_notes, boletim, infantil)
         VALUE ('".$array["ano"]."','".$array["codigo_escola"]."','".$array["serie"]."','".$array["turma"]."','".$array["turno"]."','".$array["escola"]."','".$array["matricula"]."','".$array["nome"]."','".$array["tipo_usuario"]."','".$array["tipo_acesso"]."','".$array["nascimento"]."','".$array["qtd_notes"]."','".$array["boletim"]."','".$array["infantil"]."');";
         mysqli_query($connect, $insert);
     }

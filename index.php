@@ -20,16 +20,10 @@
           <img src="./assets/images/logotipo.png" width="40" height="40" class="d-inline" alt="" />
           Colégio Computex
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
-          aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <!-- BOTÃO DE SAIR -->
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
           <div class="navbar-nav ml-auto">
             <a class="nav-link" href="paginaInicial.html">Sair</a>
           </div>
-        </div>
       </div>
     </nav>
   </header>
