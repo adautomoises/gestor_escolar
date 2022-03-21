@@ -1,4 +1,6 @@
 <?php
+include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
+
 $connect = mysqli_connect("localhost", "root", "", "escola");
 
 if (mysqli_connect_errno()) {
@@ -8,9 +10,19 @@ if (mysqli_connect_errno()) {
   // echo "Conectado ao MySQL <br> ";
 }
 
-$params = array('action'=>'getTurmas', 'ano'=>'20211');
+$filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?action=getTurmas&ano=20211";
+$action = $_REQUEST['action'];
 
-$filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
+
+switch ($action) {
+  case "getTurmas":
+    $response = getTurmas($_REQUEST['ano']);
+    break;
+  
+  default:
+    break;
+}
+
 $data = file_get_contents($filename);
 $array = json_decode($data, true);
 

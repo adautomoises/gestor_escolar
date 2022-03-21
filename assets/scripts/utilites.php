@@ -15,7 +15,7 @@
     $btn[1]->image = "./assets/images/logotipo.png";
     $btn[1]->label = "Horários";
     $btn[2] = new objetos();
-    $btn[2]->link = "pages/turmas.php";
+    $btn[2]->link = "pages/turmas.php?action=getTurmas&ano=20211";
     $btn[2]->image = "./assets/images/logotipo.png";
     $btn[2]->label = "Turmas";
     $btn[3] = new objetos();
