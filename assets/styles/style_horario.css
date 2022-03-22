@@ -25,4 +25,6 @@ table {
 .col.horario{
     display: flex;
     justify-content: center;
+    height: 60px;
+    width: 120px;
 }

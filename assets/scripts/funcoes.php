@@ -17,5 +17,10 @@ if (mysqli_connect_errno()) {
     }
   }
   mysqli_close($connect);
-  echo json_encode($turmas);
+  // echo json_encode($turmas);
+}
+
+function formatarHorario($horario){
+  if(empty($horario) || strlen($horario) < 4) return null;
+  return substr($horario, 0, -2) .":". substr($horario, 2, 2);
 }

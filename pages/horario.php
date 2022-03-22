@@ -1,5 +1,7 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "escola");
+  include ('../assets/scripts/funcoes.php');
+
+  $connect = mysqli_connect("localhost", "root", "", "escola");
 
 if (mysqli_connect_errno()) {
   echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
@@ -16,12 +18,15 @@ $array = json_decode($data, true);
 
 foreach ($array["horario"] as $dia) {
   foreach ($dia["horarios"] as $key => $horario) {
+    $horario['inicio'] = formatarHorario($horario['inicio']);
+    $horario['fim'] = formatarHorario($horario['fim']);
     $select = "SELECT * FROM escola.horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
       break;
     }
+
     $insert = "INSERT INTO horarios (dia, escola, codigo_serie, serie, turno, turma, codigo_disciplina, disciplina, inicio, fim, professor) 
     VALUE ('" . $dia["dia"] . "','" . $horario["escola"] . "','" . $horario["codigo_serie"] . "','" . $horario["serie"] . "','" . $horario["turno"] . "','" . $horario["turma"] . "','" . $horario["codigo_disciplina"] . "','" . $horario["disciplina"] . "','" . $horario["inicio"] . "','" . $horario["fim"] . "','" . $horario["professor"] . "');";
     mysqli_query($connect, $insert);
@@ -31,7 +36,8 @@ $grade = [];
 
 foreach ($array["horario"] as $dia) {
   foreach ($dia["horarios"] as $key => $horario) {
-    $select = "SELECT disciplina, professor FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
+    $horario['inicio'] = formatarHorario($horario['inicio']);
+    $select = "SELECT disciplina, professor, inicio, fim FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
@@ -89,7 +95,7 @@ foreach ($array["horario"] as $dia) {
             </th>
             <?php
             for ($i = 0; $i < 4; $i++) {
-              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> <div class='col horario'>" . $grade[$i]['inicio'] . " às " . $grade[$i]['fim'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -99,7 +105,7 @@ foreach ($array["horario"] as $dia) {
             </th>
             <?php
             for ($i = 4; $i < 8; $i++) {
-              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> <div class='col horario'>" . $grade[$i]['inicio'] . " às " . $grade[$i]['fim'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -109,7 +115,7 @@ foreach ($array["horario"] as $dia) {
             </th>
             <?php
             for ($i = 8; $i < 12; $i++) {
-              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> <div class='col horario'>" . $grade[$i]['inicio'] . " às " . $grade[$i]['fim'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -119,7 +125,7 @@ foreach ($array["horario"] as $dia) {
             </th>
             <?php
             for ($i = 12; $i < 16; $i++) {
-              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> <div class='col horario'>" . $grade[$i]['inicio'] . " às " . $grade[$i]['fim'] . "</div> </td>";
             }
             ?>
           </tr>
@@ -129,7 +135,7 @@ foreach ($array["horario"] as $dia) {
             </th>
             <?php
             for ($i = 16; $i < 20; $i++) {
-              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> </td>";
+              echo "<td> <div class='col horario'>" . $grade[$i]['disciplina'] . "</div> <div class='col horario'>" . $grade[$i]['professor'] . "</div> <div class='col horario'>" . $grade[$i]['inicio'] . " às " . $grade[$i]['fim'] . "</div> </td>";
             }
             ?>
           </tr>
