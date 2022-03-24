@@ -88,8 +88,9 @@ foreach ($array as $key => $value) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/styles/style_turmas.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="../assets/styles/style_turmas.php" type="text/css" />
+
   <title>Computex</title>
 </head>
 
@@ -180,6 +181,17 @@ foreach ($array as $key => $value) {
               <?php
               for ($i = 0; $i < 17; $i++) {
                 echo "<td> <div class='turma'>" . $grade_m[$i]['serie_longa'] . "</div> </td>";
+              }
+              ?>
+            </tr>
+            <tr class="coluna">
+              <th scope='col'>
+                <div class="">⠀</div>
+              </th>
+              <?php
+              include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\utilites.php');
+              for ($i = 0; $i < 17; $i++) {
+                echo "<td><a href=/turma_selecionada.php?".$params[$i]->link." class='btn btn-primary btn-sm'>Acessar</td>";
               }
               ?>
             </tr>
