@@ -13,7 +13,7 @@ body{
   padding: 0;
   box-sizing: border-box;
 }
-.tabela{
+.tabela, .topico{
   display: flex;
   justify-content: center;
 }

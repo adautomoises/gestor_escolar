@@ -11,17 +11,6 @@ if (mysqli_connect_errno()) {
 }
 
 $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?action=getTurmas&ano=20211";
-$action = $_REQUEST['action'];
-
-
-switch ($action) {
-  case "getTurmas":
-    $response = getTurmas($_REQUEST['ano']);
-    break;
-  
-  default:
-    break;
-}
 
 $data = file_get_contents($filename);
 $array = json_decode($data, true);
@@ -135,7 +124,7 @@ foreach ($array as $key => $value) {
         <table class="table">
           <tbody class="tabela">
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div>Grau Serie</div>
               </th>
               <?php
@@ -145,7 +134,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Turma</div>
               </th>
               <?php
@@ -155,7 +144,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Turno</div>
               </th>
               <?php
@@ -165,7 +154,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Grau Longo</div>
               </th>
               <?php
@@ -175,7 +164,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Serie Longa</div>
               </th>
               <?php
@@ -185,7 +174,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">⠀</div>
               </th>
               <?php
@@ -202,7 +191,7 @@ foreach ($array as $key => $value) {
         <table class="table">
           <tbody class="tabela">
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div>Grau Serie</div>
               </th>
               <?php
@@ -212,7 +201,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Turma</div>
               </th>
               <?php
@@ -222,7 +211,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Turno</div>
               </th>
               <?php
@@ -232,7 +221,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Grau Longo</div>
               </th>
               <?php
@@ -242,7 +231,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Serie Longa</div>
               </th>
               <?php
@@ -258,7 +247,7 @@ foreach ($array as $key => $value) {
         <table class="table">
           <tbody class="tabela">
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div>Grau Serie</div>
               </th>
               <?php
@@ -268,7 +257,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Turma</div>
               </th>
               <?php
@@ -278,7 +267,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Turno</div>
               </th>
               <?php
@@ -288,7 +277,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Grau Longo</div>
               </th>
               <?php
@@ -298,7 +287,7 @@ foreach ($array as $key => $value) {
               ?>
             </tr>
             <tr class="coluna">
-              <th scope='col'>
+              <th class="topico" scope='col'>
                 <div class="">Serie Longa</div>
               </th>
               <?php
