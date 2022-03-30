@@ -1,5 +1,6 @@
 <?php
 include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
+include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\utilites.php');
 
 $connect = mysqli_connect("localhost", "root", "", "escola");
 
@@ -178,9 +179,8 @@ foreach ($array as $key => $value) {
                 <div class="">⠀</div>
               </th>
               <?php
-              include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\utilites.php');
               for ($i = 0; $i < 17; $i++) {
-                echo "<td><a href=/turma_selecionada.php?".$params[$i]->link." class='btn btn-primary btn-sm'>Acessar</td>";
+                echo "<td><a href=/gestor_escolar/pages/turma_selecionada.php?".$turma_m[$i]->link." class='btn btn-primary btn-sm'>Acessar</td>";
               }
               ?>
             </tr>
@@ -240,6 +240,16 @@ foreach ($array as $key => $value) {
               }
               ?>
             </tr>
+            <tr class="coluna">
+              <th class="topico" scope='col'>
+                <div class="">⠀</div>
+              </th>
+              <?php
+              for ($i = 0; $i < 16; $i++) {
+                echo "<td><a href=/gestor_escolar/pages/turma_selecionada.php?".$turma_t[$i]->link." class='btn btn-primary btn-sm'>Acessar</td>";
+              }
+              ?>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -293,6 +303,16 @@ foreach ($array as $key => $value) {
               <?php
               for ($i = 0; $i < 1; $i++) {
                 echo "<td> <div class='turma'>" . $grade_n[$i]['serie_longa'] . "</div> </td>";
+              }
+              ?>
+            </tr>
+            <tr class="coluna">
+              <th class="topico" scope='col'>
+                <div class="">⠀</div>
+              </th>
+              <?php
+              for ($i = 0; $i < 1; $i++) {
+                echo "<td><a href=/gestor_escolar/pages/turma_selecionada.php?".$turma_n[$i]->link." class='btn btn-primary btn-sm'>Acessar</td>";
               }
               ?>
             </tr>

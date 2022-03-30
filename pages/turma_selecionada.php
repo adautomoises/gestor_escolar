@@ -1,4 +1,5 @@
 <?php
+include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
 $connect = mysqli_connect("localhost", "root", "", "escola");
 
 if (mysqli_connect_errno()) {
@@ -7,32 +8,9 @@ if (mysqli_connect_errno()) {
 } else {
   // echo "Conectado ao MySQL <br> ";
 }
+$param = $_REQUEST;
 
-$params = array('action'=>'getAlunosTurma','ano'=>'20211', 'escola'=>'1', 'grau_serie'=>'15', 'turno'=>'M','turma'=>'1', 'status'=>'C');
-
-$filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
-$data = file_get_contents($filename);
-$array = json_decode($data, true);
-
-// echo '<pre>';
-// var_dump($array);
-// echo '</pre>';
-// exit;
-
-foreach ($array as $key => $value) {
-
-  $select = "SELECT * FROM alunos WHERE matricula LIKE '" . $value["matricula"] . "' AND nome LIKE '" . $value["nome"] . "' AND sequencia LIKE '" . $value["sequencia"] . "' AND status LIKE '" . $value["status"] . "';";
-  $result = mysqli_query($connect, $select);
-  $row = mysqli_fetch_assoc($result);
-  if ($row) {
-    break;
-  }
-
-  $insert = "INSERT INTO alunos (matricula, nome, sequencia, status)
-        VALUE ('" . $value["matricula"] . "','" . $value["nome"] . "','" . $value["sequencia"] . "','" . $value["status"] . "');";
-
-  mysqli_query($connect, $insert);
-}
+getAlunos($param);
 
 ?>
 
@@ -51,6 +29,9 @@ foreach ($array as $key => $value) {
 </head>
 
 <body>
+  <?php
+
+  ?>
 
   <!-- Optional JavaScript; choose one of the two! -->
 

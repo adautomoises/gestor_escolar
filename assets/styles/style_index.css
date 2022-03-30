@@ -70,11 +70,11 @@ body {
 .shadow {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
-.container {
+#container-profile {
   display: flex;
 justify-content: center;
 }
-.container .row{
+.container #row-profile{
     justify-content: space-evenly;
     margin-top: 75px;
     border: 1px solid black;
@@ -86,7 +86,7 @@ justify-content: center;
     background-size: cover;
     width: 720px;
 }
-.container .row .col-3{
+#column-profile{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,4 +104,7 @@ justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#row-modal-data, #row-modal-address, #row-modal-contact{
+  justify-content: start;
 }
