@@ -1,15 +1,8 @@
 <?php
-include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
-include ('C:\xampp\htdocs\gestor_escolar\assets\scripts\utilites.php');
+include ('../assets/scripts/funcoes.php');
+include ('../assets/scripts/utilites.php');
+include ('../assets/scripts/conexao.php');
 
-$connect = mysqli_connect("localhost", "root", "", "escola");
-
-if (mysqli_connect_errno()) {
-  echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-  exit();
-} else {
-  // echo "Conectado ao MySQL <br> ";
-}
 
 $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?action=getTurmas&ano=20211";
 

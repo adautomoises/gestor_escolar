@@ -29,7 +29,7 @@ if ($responseAluno['status'] == 'C') {
       <div class="container-fluid">
         <a href="./index.php" class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Colégio Computex</a>
         <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="paginaInicial.html">Sair</a>
+          <a class="nav-link" href="login.php">Sair</a>
         </div>
       </div>
     </nav>

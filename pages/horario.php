@@ -1,14 +1,6 @@
 <?php
   include ('../assets/scripts/funcoes.php');
-
-  $connect = mysqli_connect("localhost", "root", "", "escola");
-
-if (mysqli_connect_errno()) {
-  echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-  exit();
-} else {
-  // echo "Conectado ao MySQL <br> ";
-}
+  include ('../assets/scripts/conexao.php');
 
 $params = array('matricula'=>'2011004', 'senha' => '99999999', 'ano'=>'20211');
 

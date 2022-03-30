@@ -1,12 +1,7 @@
 <?php
-
 function getTurmas($ano){
- $connect = mysqli_connect("localhost", "root", "", "escola");
+  include ('conexao.php');
 
-if (mysqli_connect_errno()) {
-  echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-  exit();
-}
   $select = "SELECT codigo_escola, ano, grau_serie, turno, turma, grau_longo, serie_longa FROM turmas WHERE ano LIKE ".$ano."";
   $result = mysqli_query($connect, $select);
   $turmas = [];
@@ -23,14 +18,9 @@ function formatarHorario($horario){
   return substr($horario, 0, -2) .":". substr($horario, 2, 2);
 }
 
-function getDados($matricula)
-{
-  $connect = mysqli_connect("localhost", "root", "", "escola");
+function getDados($matricula){
+  include ('conexao.php');
 
-  if (mysqli_connect_errno()) {
-    echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-    exit();
-  }
   $params = array('action'=>'getInfAluno', 'matricula'=> $matricula);
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);
@@ -56,12 +46,8 @@ function getDados($matricula)
 }
 function getEndereços($matricula)
 {
-  $connect = mysqli_connect("localhost", "root", "", "escola");
+  include ('conexao.php');
 
-  if (mysqli_connect_errno()) {
-    echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-    exit();
-  }
   $params = array('action'=>'getInfAluno', 'matricula'=> $matricula);
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);
@@ -87,12 +73,8 @@ function getEndereços($matricula)
 }
 function getAlunos($param)
 {
-  $connect = mysqli_connect("localhost", "root", "", "escola");
+  include ('conexao.php');
 
-  if (mysqli_connect_errno()) {
-    echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-    exit();
-  }
   $params = array('action'=>$param['action'], 'ano'=>$param['ano'], 'escola'=>$param['escola'], 'grau_serie'=>$param['grau_serie'], 'turno'=>$param['turno'],'turma'=>$param['turma'], 'status'=>$param['status']);
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);

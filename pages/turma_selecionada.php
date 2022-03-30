@@ -1,13 +1,10 @@
 <?php
-include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
-$connect = mysqli_connect("localhost", "root", "", "escola");
+include ('../assets/scripts/funcoes.php');
+include ('../assets/scripts/utilites.php');
+include ('../assets/scripts/conexao.php');
 
-if (mysqli_connect_errno()) {
-  echo "Falha ao conectar ao MySQL: " . mysqli_connect_error();
-  exit();
-} else {
-  // echo "Conectado ao MySQL <br> ";
-}
+
+#NOTA: PASSAR OS PARAMETROS DOS BOTÕES DAS TURMAS COMO POST PARA NÃO FICAR MOSTRANDO NO URL (VERIFICAR SE É POSSÍVEL);
 $param = $_REQUEST;
 
 getAlunos($param);
