@@ -1,8 +1,10 @@
 <?php
+  session_start();
   include ('../assets/scripts/funcoes.php');
   include ('../assets/scripts/conexao.php');
-
-$params = array('matricula'=>'2011004', 'senha' => '99999999', 'ano'=>'20211');
+  // $_SESSION['usuario'] = '2011004';
+  // $_SESSION['senha'] = '99999999';
+$params = array('matricula'=> $_SESSION['usuario'], 'senha' => $_SESSION['senha'], 'ano'=>'20211');
 
 $filename = "http://camerascomputex.ddns.net:8080/escola/json_horario_aluno.php?". http_build_query($params);
 $data = file_get_contents($filename);
@@ -12,7 +14,7 @@ foreach ($array["horario"] as $dia) {
   foreach ($dia["horarios"] as $key => $horario) {
     $horario['inicio'] = formatarHorario($horario['inicio']);
     $horario['fim'] = formatarHorario($horario['fim']);
-    $select = "SELECT * FROM escola.horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
+    $select = "SELECT * FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "' AND codigo_serie LIKE '" . $horario["codigo_serie"] . "' AND turno LIKE '" . $horario["turno"] . "' AND turma LIKE '" . $horario["turma"] . "';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
@@ -29,7 +31,7 @@ $grade = [];
 foreach ($array["horario"] as $dia) {
   foreach ($dia["horarios"] as $key => $horario) {
     $horario['inicio'] = formatarHorario($horario['inicio']);
-    $select = "SELECT disciplina, professor, inicio, fim FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "';";
+    $select = "SELECT disciplina, professor, inicio, fim FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "' AND codigo_serie LIKE '" . $horario["codigo_serie"] . "' AND turno LIKE '" . $horario["turno"] . "' AND turma LIKE '" . $horario["turma"] . "';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
@@ -69,7 +71,7 @@ foreach ($array["horario"] as $dia) {
         </a>
         <!-- BOTÃO DE SAIR -->
           <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="paginaInicial.html">Sair</a>
+          <a class="nav-link" href="/gestor_escolar/assets/scripts/logout.php">Sair</a>
           </div>
       </div>
     </nav>

@@ -2,11 +2,30 @@
   padding: 0;
   margin: 0;
 }
-.container{
+.col-4{
+  border: 1.5px solid black;
+}
+.title, .login-validation, .container-fluid{
   display: flex;
   justify-content: center;
+}
+.box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .form{
   display: flex;
   flex-direction: column;
+}
+.input{
+  margin: 0.35rem;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.reset{
+  text-decoration: none;
+}
+.container-fluid{
+  margin-top: 15%;
 }

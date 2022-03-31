@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ('./assets/scripts/conexao.php');
-
+include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,11 +20,11 @@ include ('./assets/scripts/conexao.php');
 
 <body>
   <section class="">
-    <div class="container">
+    <div class="container-fluid">
       <div class="col-4">
         <h3 class="title">Login</h3>
         <div class="box">
-          <form action="../gestor_escolar/assets/scripts/sistema_login.php" method="POST">
+          <form class="form" action="../gestor_escolar/assets/scripts/sistema_login.php" method="POST">
             <div class="input-login">
               <input name="usuario" class="input" type="text" placeholder="Matricula">
             </div>
@@ -33,6 +33,7 @@ include ('./assets/scripts/conexao.php');
             </div>
             <button type="submit" class="submit">Entrar</button>
           </form>
+          <a href="" class="reset">Esqueci minha senha</a>
         </div>
         <?php
         if (isset($_SESSION['no-auth'])):

@@ -1,12 +1,13 @@
 <?php
 session_start();
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\conexao.php');
+include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
 
 if(empty($_POST['usuario']) || empty($_POST['senha'])){
   header('Location: /gestor_escolar/login.php');
   exit;
 }
-
+getDados($_POST['usuario']);
 $usuario = mysqli_real_escape_string($connect, $_POST['usuario']);
 $senha = mysqli_real_escape_string($connect, $_POST['senha']);
 
@@ -17,6 +18,7 @@ $row = mysqli_num_rows($result);
 
 if($row == 1){
   $_SESSION['usuario'] = $usuario;
+  $_SESSION['senha'] = $senha;
   header('Location: /gestor_escolar/index.php');
   exit();
 } else {

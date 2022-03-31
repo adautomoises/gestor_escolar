@@ -8,7 +8,6 @@ include ('../assets/scripts/conexao.php');
 $param = $_REQUEST;
 
 getAlunos($param);
-
 ?>
 
 <!doctype html>
@@ -27,7 +26,7 @@ getAlunos($param);
 
 <body>
   <?php
-
+  
   ?>
 
   <!-- Optional JavaScript; choose one of the two! -->

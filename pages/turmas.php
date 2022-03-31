@@ -3,17 +3,9 @@ include ('../assets/scripts/funcoes.php');
 include ('../assets/scripts/utilites.php');
 include ('../assets/scripts/conexao.php');
 
-
 $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?action=getTurmas&ano=20211";
-
 $data = file_get_contents($filename);
 $array = json_decode($data, true);
-
-// echo '<pre>';
-// var_dump($array);
-// echo '</pre>';
-// exit;
-
 foreach ($array as $key => $value) {
 
   $select = "SELECT * FROM turmas WHERE grau_serie LIKE '" . $value["grau_serie"] . "' AND turno LIKE '" . $value["turno"] . "' AND turma LIKE '" . $value["turma"] . "' AND grau_longo LIKE '" . $value["grau_longo"] . "' AND serie_longa LIKE '" . $value["serie_longa"] . "';";
@@ -22,12 +14,12 @@ foreach ($array as $key => $value) {
   if ($row) {
     break;
   }
-
   $insert = "INSERT INTO turmas (codigo_escola, ano, grau_serie, turno, turma, grau_longo, serie_longa)
         VALUE ('" . $value["codigo_escola"] . "','" . $value["ano"] . "','" . $value["grau_serie"] . "','" . $value["turno"] . "','" . $value["turma"] . "','" . $value["grau_longo"] . "','" . $value["serie_longa"] . "');";
 
   mysqli_query($connect, $insert);
 }
+
 $grade_m = [];
 
 foreach ($array as $key => $value) {
@@ -88,7 +80,7 @@ foreach ($array as $key => $value) {
         </a>
         <!-- BOTÃO DE SAIR -->
           <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="paginaInicial.html">Sair</a>
+          <a class="nav-link" href="/gestor_escolar/assets/scripts/logout.php">Sair</a>
           </div>
       </div>
     </nav>

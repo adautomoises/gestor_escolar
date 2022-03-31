@@ -1,16 +1,8 @@
 <?php
-function getTurmas($ano){
+function getTurmas(){
   include ('conexao.php');
-
-  $select = "SELECT codigo_escola, ano, grau_serie, turno, turma, grau_longo, serie_longa FROM turmas WHERE ano LIKE ".$ano."";
-  $result = mysqli_query($connect, $select);
-  $turmas = [];
-  if (mysqli_num_rows($result)> 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-      $obj = array("codigo_escola" => $row["codigo_escola"],"ano" => $row["ano"],"grau_serie" => $row["grau_serie"],"turno" => $row["turno"],"turma" => $row["turma"],"grau_longo" => $row["grau_longo"],"serie_longa" => $row["serie_longa"]);
-      $turmas += $obj;
-    }
-  }
+  
+  return $row;
   mysqli_close($connect);
 }
 function formatarHorario($horario){
@@ -55,7 +47,7 @@ function getEndereços($matricula)
   
   foreach ($array[0] as $key) { 
 
-    $select = "SELECT bairro, cep, cidade, UF FROM endereços;";
+    $select = "SELECT bairro, cep, cidade, UF FROM endereços WHERE bairro LIKE '".$array[0]["bairro"]."' AND cep LIKE '" . $array[0]["cep"]."' AND cidade LIKE '" . $array[0]["cidade"]."' AND uf LIKE '" . $array[0]["uf"]."';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
@@ -64,7 +56,7 @@ function getEndereços($matricula)
     $insert = "INSERT INTO endereços (bairro, cep, cidade, UF) VALUES ('".$array[0]["bairro"]."','".$array[0]["cep"]."','".$array[0]["cidade"]."','".$array[0]["uf"]."')";
     mysqli_query($connect, $insert);
   }
-    $select = "SELECT bairro, cep, cidade, UF FROM endereços;";
+    $select = "SELECT bairro, cep, cidade, UF FROM endereços WHERE bairro LIKE '".$array[0]["bairro"]."' AND cep LIKE '" . $array[0]["cep"]."' AND cidade LIKE '" . $array[0]["cidade"]."' AND uf LIKE '" . $array[0]["uf"]."';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
 
@@ -79,9 +71,9 @@ function getAlunos($param)
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-  
-  
+   print_r($array);exit;  
   foreach ($array as $key) { 
+   
     $select = "SELECT matricula, nome, sequencia, status FROM info_alunos WHERE matricula LIKE matricula;";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
@@ -95,6 +87,6 @@ function getAlunos($param)
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
 
-  return $row;
+  return print_r($row);
   mysqli_close($connect);
 }

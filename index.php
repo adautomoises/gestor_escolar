@@ -1,8 +1,9 @@
 <?php
 session_start();
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
-include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
+// include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
 
+// $_SESSION['usuario'] = '2011004';
 $matricula = $_SESSION['usuario'];
 $responseAluno = getDados($matricula);
 $responseEndereço = getEndereços($matricula);
@@ -152,8 +153,8 @@ if ($responseAluno['status'] == 'C') {
               </div>
               <div class="col-5"><img class="card-img rounded w-50" src="./assets/images/logotipo.png"
                   alt="Foto do Aluno" />
-                <h5>NOME DO ALUNO</h5>
-                <p>Turma: 2º Ano A | Turno: M</p>
+                <h5><?php echo $responseAluno['nome'] ?></h5>
+                <p>Turma: 2ºAno 1 | Turno: M</p>
               </div>
             </div>
           </div>
