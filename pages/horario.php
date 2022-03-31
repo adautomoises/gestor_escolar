@@ -1,7 +1,8 @@
 <?php
-  session_start();
-  include ('../assets/scripts/funcoes.php');
-  include ('../assets/scripts/conexao.php');
+session_start();
+include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
+include ('../assets/scripts/funcoes.php');
+include ('../assets/scripts/conexao.php');
   // $_SESSION['usuario'] = '2011004';
   // $_SESSION['senha'] = '99999999';
 $params = array('matricula'=> $_SESSION['usuario'], 'senha' => $_SESSION['senha'], 'ano'=>'20211');

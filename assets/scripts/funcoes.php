@@ -71,7 +71,7 @@ function getAlunos($param)
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-   print_r($array);exit;  
+  print_r($array);exit;  
   foreach ($array as $key) { 
    
     $select = "SELECT matricula, nome, sequencia, status FROM info_alunos WHERE matricula LIKE matricula;";

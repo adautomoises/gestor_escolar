@@ -1,4 +1,6 @@
 <?php
+session_start();
+include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
 include ('../assets/scripts/funcoes.php');
 include ('../assets/scripts/utilites.php');
 include ('../assets/scripts/conexao.php');
