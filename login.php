@@ -1,3 +1,8 @@
+<?php
+session_start();
+include ('./assets/scripts/conexao.php');
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -19,19 +24,26 @@
       <div class="col-4">
         <h3 class="title">Login</h3>
         <div class="box">
-          <form action="login.php" method="POST">
-            <div class="control">
+          <form action="../gestor_escolar/assets/scripts/sistema_login.php" method="POST">
+            <div class="input-login">
               <input name="usuario" class="input" type="text" placeholder="Matricula">
             </div>
-            <div class="control">
+            <div class="input-password">
               <input name="senha" class="input" type="password" placeholder="Senha">
             </div>
             <button type="submit" class="submit">Entrar</button>
           </form>
         </div>
+        <?php
+        if (isset($_SESSION['no-auth'])):
+        ?>
         <div class="login-validation">
-          <p>ERRO: Usuário ou Senha inválidos.</p>
+          <p>Usuário ou Senha inválidos.</p>
         </div>
+        <?php
+        endif;
+        unset($_SESSION['no-auth']);
+        ?>
       </div>
     </div>
   </section>

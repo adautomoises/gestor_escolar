@@ -28,16 +28,16 @@ function getDados($matricula){
 
   foreach ($array[0] as $key) { 
 
-    $select = "SELECT nome, email, cpf, matricula, status, nascimento, sexo, telefone, celular, sequencia FROM info_alunos WHERE matricula LIKE " . $array[0]["matricula"] . ";";
+    $select = "SELECT * FROM info_alunos WHERE matricula LIKE " . $array[0]["matricula"] . ";";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
       break;
     }
-    $insert = "INSERT INTO info_alunos (nome, email, cpf, matricula, status, nascimento, sexo, telefone, celular, sequencia) VALUES ('".$array[0]["nome"]."','".$array[0]["aluno_e_mail"]."','".$array[0]["cpf"]."','".$array[0]["matricula"]."','".$array[0]["status"]."','".$array[0]["nascimento"]."','".$array[0]["sexo"]."','".$array[0]["telefone"]."','".$array[0]["celular"]."','".$array[0]["sequencia"]."')";
+    $insert = "INSERT INTO info_alunos (nome, email, cpf, matricula, status, nascimento, sexo, telefone, celular, sequencia, senha) VALUES ('".$array[0]["nome"]."','".$array[0]["aluno_e_mail"]."','".$array[0]["cpf"]."','".$array[0]["matricula"]."','".$array[0]["status"]."','".$array[0]["nascimento"]."','".$array[0]["sexo"]."','".$array[0]["telefone"]."','".$array[0]["celular"]."','".$array[0]["sequencia"]."', md5('".$array[0]["senha"]."'))";
     mysqli_query($connect, $insert);
   }
-    $select = "SELECT nome, email, matricula, status, nascimento, sexo, telefone, celular, sequencia FROM info_alunos WHERE matricula LIKE '".$array[0]['matricula']."';";
+    $select = "SELECT * FROM info_alunos WHERE matricula LIKE '".$array[0]['matricula']."';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
 

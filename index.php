@@ -1,6 +1,9 @@
 <?php
+session_start();
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
-$matricula = '2011004';
+include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
+
+$matricula = $_SESSION['usuario'];
 $responseAluno = getDados($matricula);
 $responseEndereço = getEndereços($matricula);
 if ($responseAluno['status'] == 'C') {
@@ -29,7 +32,7 @@ if ($responseAluno['status'] == 'C') {
       <div class="container-fluid">
         <a href="./index.php" class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Colégio Computex</a>
         <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="login.php">Sair</a>
+          <a class="nav-link" href="/gestor_escolar/assets/scripts/logout.php">Sair</a>
         </div>
       </div>
     </nav>
