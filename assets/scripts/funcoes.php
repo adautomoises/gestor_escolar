@@ -1,10 +1,4 @@
 <?php
-function getTurmas(){
-  include ('conexao.php');
-  
-  return $row;
-  mysqli_close($connect);
-}
 function formatarHorario($horario){
   if(empty($horario) || strlen($horario) < 4) return null;
   return substr($horario, 0, -2) .":". substr($horario, 2, 2);
@@ -71,22 +65,21 @@ function getAlunos($param)
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-  print_r($array);exit;  
-  foreach ($array as $key) { 
-   
-    $select = "SELECT matricula, nome, sequencia, status FROM info_alunos WHERE matricula LIKE matricula;";
+  
+  foreach ($array as $key => $value) { 
+    // print_r($value['matricula']);
+    $select = "SELECT matricula, nome, sequencia, status FROM info_alunos WHERE matricula LIKE '".$value['matricula']."';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
       break;
     }
-    $insert = "INSERT INTO info_alunos (matricula, nome, sequencia, status) VALUES ('".$array["matricula"]."','".$array["nome"]."','".$array["sequencia"]."','".$array["status"]."')";
-    mysqli_query($connect, $insert);
+    // getDados($value['matricula']);
   }
-    $select = "SELECT matricula, nome, sequencia, status FROM info_alunos WHERE matricula LIKE matricula;";
+    $select = "SELECT matricula, nome, sequencia, status FROM info_alunos WHERE matricula LIKE '".$value['matricula']."'";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
+    // print_r($row);
 
-  return print_r($row);
   mysqli_close($connect);
 }
