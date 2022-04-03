@@ -7,9 +7,9 @@ include ('../assets/scripts/conexao.php');
 
 
 #NOTA: PASSAR OS PARAMETROS DOS BOTÕES DAS TURMAS COMO POST PARA NÃO FICAR MOSTRANDO NO URL (VERIFICAR SE É POSSÍVEL);
-$param = $_REQUEST;
 
-getAlunos($param);
+$responseTurmas = getDados($_SESSION['usuario']);
+print_r($responseTurmas);
 ?>
 
 <!doctype html>

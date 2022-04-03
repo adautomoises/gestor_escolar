@@ -3,50 +3,12 @@ session_start();
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
 include ('../assets/scripts/funcoes.php');
 include ('../assets/scripts/conexao.php');
-  // $_SESSION['usuario'] = '2011004';
-  // $_SESSION['senha'] = '99999999';
-$params = array('matricula'=> $_SESSION['usuario'], 'senha' => $_SESSION['senha'], 'ano'=>'20211');
 
-$filename = "http://camerascomputex.ddns.net:8080/escola/json_horario_aluno.php?". http_build_query($params);
-$data = file_get_contents($filename);
-$array = json_decode($data, true);
+$matricula = $_SESSION['usuario'];
+$senha = $_SESSION['senha'];
 
-foreach ($array["horario"] as $dia) {
-  foreach ($dia["horarios"] as $key => $horario) {
-    $horario['inicio'] = formatarHorario($horario['inicio']);
-    $horario['fim'] = formatarHorario($horario['fim']);
-    $select = "SELECT * FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "' AND codigo_serie LIKE '" . $horario["codigo_serie"] . "' AND turno LIKE '" . $horario["turno"] . "' AND turma LIKE '" . $horario["turma"] . "';";
-    $result = mysqli_query($connect, $select);
-    $row = mysqli_fetch_assoc($result);
-    if ($row) {
-      break;
-    }
+$grade = getHorarios($matricula, $senha);
 
-    $insert = "INSERT INTO horarios (dia, escola, codigo_serie, serie, turno, turma, codigo_disciplina, disciplina, inicio, fim, professor) 
-    VALUE ('" . $dia["dia"] . "','" . $horario["escola"] . "','" . $horario["codigo_serie"] . "','" . $horario["serie"] . "','" . $horario["turno"] . "','" . $horario["turma"] . "','" . $horario["codigo_disciplina"] . "','" . $horario["disciplina"] . "','" . $horario["inicio"] . "','" . $horario["fim"] . "','" . $horario["professor"] . "');";
-    mysqli_query($connect, $insert);
-  }
-}
-$grade = [];
-
-foreach ($array["horario"] as $dia) {
-  foreach ($dia["horarios"] as $key => $horario) {
-    $horario['inicio'] = formatarHorario($horario['inicio']);
-    $select = "SELECT disciplina, professor, inicio, fim FROM horarios WHERE dia LIKE '" . $dia["dia"] . "' AND inicio LIKE '" . $horario["inicio"] . "' AND codigo_serie LIKE '" . $horario["codigo_serie"] . "' AND turno LIKE '" . $horario["turno"] . "' AND turma LIKE '" . $horario["turma"] . "';";
-    $result = mysqli_query($connect, $select);
-    $row = mysqli_fetch_assoc($result);
-    if ($row) {
-      array_push($grade, $row);
-    }
-  }
-}
-
-// echo '<pre>';
-// print_r($grade);
-// echo '</pre>';
-
-
-// mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
