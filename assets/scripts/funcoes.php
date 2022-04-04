@@ -11,7 +11,6 @@ function getDados($matricula){
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?". http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-
   foreach ($array[0] as $key) { 
 
     $select = "SELECT * FROM info_alunos WHERE matricula LIKE " . $array[0]["matricula"] . ";";
@@ -20,12 +19,16 @@ function getDados($matricula){
     if ($row) {
       break;
     }
+    getHorarios($array[0]["matricula"], $array[0]["senha"]);
     $idTurmas = getTurmasById($array[0]["matricula"]);
     getEndereços($array[0]["matricula"]);
     $idEndereços = getEndereçosById($array[0]["matricula"]);
-    $insert = "INSERT INTO info_alunos (nome, email, cpf, matricula, status, nascimento, sexo, telefone, celular, sequencia, senha, idTurmas, idEndereços) VALUES ('".$array[0]["nome"]."','".$array[0]["aluno_e_mail"]."','".$array[0]["cpf"]."','".$array[0]["matricula"]."','".$array[0]["status"]."','".$array[0]["nascimento"]."','".$array[0]["sexo"]."','".$array[0]["telefone"]."','".$array[0]["celular"]."','".$array[0]["sequencia"]."', md5('".$array[0]["senha"]."'), $idTurmas , $idEndereços)";
+    $idHorarios = getIdHorarios($array[0]["matricula"]);
+
+    $insert = "INSERT INTO info_alunos (nome, email, cpf, matricula, status, nascimento, sexo, telefone, celular, sequencia, senha, idTurmas, idEndereços, idHorarios) VALUES ('".$array[0]["nome"]."','".$array[0]["aluno_e_mail"]."','".$array[0]["cpf"]."','".$array[0]["matricula"]."','".$array[0]["status"]."','".$array[0]["nascimento"]."','".$array[0]["sexo"]."','".$array[0]["telefone"]."','".$array[0]["celular"]."','".$array[0]["sequencia"]."', md5('".$array[0]["senha"]."'), $idTurmas , $idEndereços, '".$idHorarios["NEW_idHorarios"]."')";
     mysqli_query($connect, $insert);
-  }
+
+  } 
     $select = "SELECT * FROM info_alunos WHERE matricula LIKE '".$array[0]['matricula']."';";
     $result = mysqli_query($connect, $select);
     $row = mysqli_fetch_assoc($result);
@@ -33,6 +36,7 @@ function getDados($matricula){
   return $row;
   mysqli_close($connect);
 }
+
 function getEndereços($matricula){
   include ('conexao.php');
 
@@ -59,6 +63,7 @@ function getEndereços($matricula){
   return $row;
   mysqli_close($connect);
 }
+
 function cadastrarAlunos($param){
   include ('conexao.php');
 
@@ -82,6 +87,7 @@ function cadastrarAlunos($param){
 
   mysqli_close($connect);
 }
+
 function getTurmasById($matricula){
   include ('conexao.php');
   
@@ -167,5 +173,17 @@ function getHorarios($matricula, $senha){
     }
   }
   return $grade;
+  mysqli_close($connect);
+}
+
+function getIdHorarios($matricula){
+  include ('conexao.php');
+  $idTurmas = getTurmasById($matricula);
+  $select = "SELECT h.idTurmas, GROUP_CONCAT(h.idHorarios) as NEW_idHorarios FROM horarios as h JOIN turmas as t
+  WHERE h.idTurmas LIKE $idTurmas AND h.idTurmas = t.idTurmas GROUP BY idTurmas";
+    $result = mysqli_query($connect, $select);
+    $row = mysqli_fetch_assoc($result);
+
+  return $row;
   mysqli_close($connect);
 }

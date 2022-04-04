@@ -5,11 +5,9 @@ include ('../assets/scripts/funcoes.php');
 include ('../assets/scripts/utilites.php');
 include ('../assets/scripts/conexao.php');
 
+$param = $_REQUEST;
+cadastrarAlunos($param);
 
-#NOTA: PASSAR OS PARAMETROS DOS BOTÕES DAS TURMAS COMO POST PARA NÃO FICAR MOSTRANDO NO URL (VERIFICAR SE É POSSÍVEL);
-
-$responseTurmas = getDados($_SESSION['usuario']);
-print_r($responseTurmas);
 ?>
 
 <!doctype html>

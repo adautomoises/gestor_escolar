@@ -3,8 +3,8 @@ session_start();
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\funcoes.php');
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
 
-// $_SESSION['usuario'] = '2011004';
 $matricula = $_SESSION['usuario'];
+$senha = $_SESSION['senha'];
 $responseAluno = getDados($matricula);
 $responseEndereço = getEndereços($matricula);
 if ($responseAluno['status'] == 'C') {
