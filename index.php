@@ -5,13 +5,13 @@ include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
 
 $matricula = $_SESSION['usuario'];
 $senha = $_SESSION['senha'];
-$responseAluno = getDados($matricula);
-$responseEndereço = getEndereços($matricula);
-if ($responseAluno['status'] == 'C') {
-  $responseAluno['status'] = 'Cursando';
-} else {
-  $responseAluno['status'] = 'Desistente';
-}
+// $responseAluno = getDados($matricula);
+// $responseEndereço = getEndereços($matricula);
+// if ($responseAluno['status'] == 'C') {
+//   $responseAluno['status'] = 'Cursando';
+// } else {
+//   $responseAluno['status'] = 'Desistente';
+// }
 ?>
 
 <!doctype html>
@@ -111,31 +111,31 @@ if ($responseAluno['status'] == 'C') {
                         <div id="container-modal" class='container'>
                           <div id='row-modal-data' class='row'>
                 <?php
-                echo
-                " <div class='col-4'> <h6>Nome</h6>" . $responseAluno['nome'] . "</div>
-                  <div class='col-4'> <h6>Matrícula</h6>" . $responseAluno['matricula'] . "</div>
-                  <div class='col-4'> <h6>Nascimento</h6>" . $responseAluno['nascimento'] . "</div>
-                  <div class='col-4'> <h6>Sexo</h6>" . $responseAluno['sexo'] . "</div>
-                  <div class='col-4'> <h6>Situação</h6>" . $responseAluno['status'] . "</div> "
+                // echo
+                // " <div class='col-4'> <h6>Nome</h6>" . $responseAluno['nome'] . "</div>
+                //   <div class='col-4'> <h6>Matrícula</h6>" . $responseAluno['matricula'] . "</div>
+                //   <div class='col-4'> <h6>Nascimento</h6>" . $responseAluno['nascimento'] . "</div>
+                //   <div class='col-4'> <h6>Sexo</h6>" . $responseAluno['sexo'] . "</div>
+                //   <div class='col-4'> <h6>Situação</h6>" . $responseAluno['status'] . "</div> "
                 ?>
                       </div>
                       <div id='row-modal-address' class='row'>
                         <h5>Endereço</h5>
                 <?php
-                echo
-                " <div class='col-3'> <h6>CEP</h6>" . $responseEndereço['cep'] . "</div>
-                  <div class='col-3'> <h6>Bairro</h6>" . $responseEndereço['bairro'] . "</div>
-                  <div class='col-3'> <h6>Cidade</h6>" . $responseEndereço['cidade'] . "</div>
-                  <div class='col-3'> <h6>UF</h6>" . $responseEndereço['UF'] . "</div> "
+                // echo
+                // " <div class='col-3'> <h6>CEP</h6>" . $responseEndereço['cep'] . "</div>
+                //   <div class='col-3'> <h6>Bairro</h6>" . $responseEndereço['bairro'] . "</div>
+                //   <div class='col-3'> <h6>Cidade</h6>" . $responseEndereço['cidade'] . "</div>
+                //   <div class='col-3'> <h6>UF</h6>" . $responseEndereço['UF'] . "</div> "
                 ?>
                           </div>
                           <div id='row-modal-contact' class='row'>
                         <h5>Contatos</h5>
                 <?php
-                echo
-              " <div class='col-3'> <h6>Telefone</h6>" . $responseAluno['telefone'] . "</div>
-                <div class='col-3'> <h6>Celular</h6>" . $responseAluno['celular'] . "</div>
-                <div class='col-3'> <h6>Email</h6>" . $responseAluno['email'] . "</div> "
+              //   echo
+              // " <div class='col-3'> <h6>Telefone</h6>" . $responseAluno['telefone'] . "</div>
+              //   <div class='col-3'> <h6>Celular</h6>" . $responseAluno['celular'] . "</div>
+              //   <div class='col-3'> <h6>Email</h6>" . $responseAluno['email'] . "</div> "
 
                 ?>
                           </div>

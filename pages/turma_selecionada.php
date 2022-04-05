@@ -7,7 +7,9 @@ include ('../assets/scripts/conexao.php');
 
 $param = $_REQUEST;
 cadastrarAlunos($param);
+// getDados($_SESSION['usuario']);
 
+// getEndereços($_SESSION['usuario']);
 ?>
 
 <!doctype html>
