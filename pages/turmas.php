@@ -137,6 +137,7 @@ foreach ($array as $key => $value) {
               </th>
               <?php
               for ($i = 0; $i < 17; $i++) {
+                $grade_m[$i]['turno'] = 'Manhã';
                 echo "<td> <div class='turma'>" . $grade_m[$i]['turno'] . "</div> </td>";
               }
               ?>
@@ -203,6 +204,7 @@ foreach ($array as $key => $value) {
               </th>
               <?php
               for ($i = 0; $i < 16; $i++) {
+                $grade_t[$i]['turno'] = 'Tarde';
                 echo "<td> <div class='turma'>" . $grade_t[$i]['turno'] . "</div> </td>";
               }
               ?>
@@ -269,6 +271,7 @@ foreach ($array as $key => $value) {
               </th>
               <?php
               for ($i = 0; $i < 1; $i++) {
+                $grade_n[$i]['turno'] = 'Noite';
                 echo "<td> <div class='turma'>" . $grade_n[$i]['turno'] . "</div> </td>";
               }
               ?>

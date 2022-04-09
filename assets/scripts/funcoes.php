@@ -4,26 +4,38 @@ function formatarHorario($horario)
   if (empty($horario) || strlen($horario) < 4) return null;
   return substr($horario, 0, -2) . ":" . substr($horario, 2, 2);
 }
-
-function getDados($matricula, $idTurma)
+function getInfo_alunos($matricula)
 {
   include('conexao.php');
+  $select = "SELECT * FROM info_alunos WHERE matricula LIKE $matricula";
+  $result = mysqli_query($connect, $select);
+  $row = mysqli_fetch_assoc($result);
 
-  $params = array('action' => 'getInfAluno', 'matricula' => $matricula);
+  return $row;
+  mysqli_close($connect);
+}
+function getInfo_alunosByParams($param)
+{
+  include('conexao.php');
+  $params = array('action' => $param['action'], 'ano' => $param['ano'], 'escola' => $param['escola'], 'grau_serie' => $param['grau_serie'], 'turno' => $param['turno'], 'turma' => $param['turma'], 'status' => $param['status']);
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?" . http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-
-  if(!$array){
-    return NULL;
+  $alunos = [];
+  foreach ($array as $key => $value) {
+   
+    $dados = getInfo_alunos($value['matricula']);
+    if (!$dados) {
+      continue;
+    }
+    array_push($alunos, $dados);
   }
-  // $idTurmas = getTurmasById($array[0]["matricula"]);
-  $idEndereços = getEndereços($array[0]["matricula"]);
 
-  return " ('" . $array[0]["nome"] . "','" . $array[0]["aluno_e_mail"] . "','" . $array[0]["cpf"] . "','" . $array[0]["matricula"] . "','" . $array[0]["status"] . "','" . $array[0]["nascimento"] . "','" . $array[0]["sexo"] . "','" . $array[0]["telefone"] . "','" . $array[0]["celular"] . "','" . $array[0]["sequencia"] . "', md5('" . $array[0]["senha"] . "'), $idTurma, $idEndereços)";
+  return $alunos;
+  mysqli_close($connect);
 }
-
-function cadastrarAlunos($param){
+function cadastrarAlunos($param)
+{
   include('conexao.php');
   http_response_code(200);
 
@@ -35,55 +47,87 @@ function cadastrarAlunos($param){
 
   $insert = "INSERT IGNORE INTO info_alunos (nome, email, cpf, matricula, status, nascimento, sexo, telefone, celular, sequencia, senha, idTurmas, idEndereços) VALUES ";
   $insert_alunos = [];
-  $aulas = NULL;
   foreach ($array as $key => $value) {
     $dados = getDados($value['matricula'], $idTurma);
-    if(!$dados){
+    if (!$dados) {
       continue;
     }
-    #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    // if(!$aulas){
-    //   $aulas = getHorarios();
-    // }
     array_push($insert_alunos, $dados);
-    // if ($key > 200) {
-    //   break;
-    // }
-
   }
   $insert .= implode(", ", $insert_alunos);
-  print_r($insert);
   mysqli_query($connect, $insert);
   mysqli_close($connect);
 }
-
-function getTurmasById($matricula){
+function getDados($matricula, $idTurma)
+{
   include('conexao.php');
 
   $params = array('action' => 'getInfAluno', 'matricula' => $matricula);
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?" . http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-  if(!$array){
+  $aluno = $array[0];
+  if (!$array) {
+    return NULL;
+  }
+  $idEndereços = getEndereçosById($aluno["matricula"]);
+
+  return " ('" . $aluno["nome"] . "','" . $aluno["aluno_e_mail"] . "','" . $aluno["cpf"] . "','" . $aluno["matricula"] . "','" . $aluno["status"] . "','" . $aluno["nascimento"] . "','" . $aluno["sexo"] . "','" . $aluno["telefone"] . "','" . $aluno["celular"] . "','" . $aluno["sequencia"] . "', md5('" . $aluno["senha"] . "'), $idTurma, $idEndereços)";
+}
+function getTurmas($matricula)
+{
+  include('conexao.php');
+  $idTurmas = getTurmasById($matricula);
+  $select = "SELECT * FROM turmas WHERE idTurmas LIKE $idTurmas";
+  $result = mysqli_query($connect, $select);
+  $row = mysqli_fetch_assoc($result);
+
+  return $row;
+  mysqli_close($connect);
+}
+function getTurmasById($matricula)
+{
+  include('conexao.php');
+
+  $params = array('action' => 'getInfAluno', 'matricula' => $matricula);
+  $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?" . http_build_query($params);
+  $data = file_get_contents($filename);
+  $array = json_decode($data, true);
+  $turma = $array[0];
+
+  if (!$array) {
     return NULL;
   }
 
-  $select = "SELECT idTurmas FROM turmas WHERE codigo_escola LIKE '" . $array[0]["escola"] . "' AND ano LIKE '" . $array[0]["ano"] . "' AND grau_serie LIKE '" . $array[0]["grau_serie"] . "' AND turno LIKE '" . $array[0]["turno"] . "' AND turma LIKE '" . $array[0]["turma"] . "';";
+  $select = "SELECT idTurmas FROM turmas WHERE codigo_escola LIKE '" . $turma["escola"] . "' AND ano LIKE '" . $turma["ano"] . "' AND grau_serie LIKE '" . $turma["grau_serie"] . "' AND turno LIKE '" . $turma["turno"] . "' AND turma LIKE '" . $turma["turma"] . "';";
   $result = mysqli_query($connect, $select);
   $row = mysqli_fetch_assoc($result);
 
   return $row["idTurmas"];
   mysqli_close($connect);
 }
+function getEndereços($matricula)
+{
+  include('conexao.php');
+  $idEndereços = getEndereçosById($matricula);
 
-function getEndereços($matricula){
+  $select = "SELECT * FROM endereços WHERE idEndereços LIKE $idEndereços";
+  $result = mysqli_query($connect, $select);
+  $row = mysqli_fetch_assoc($result);
+
+  return $row;
+  mysqli_close($connect);
+}
+
+function getEndereçosById($matricula)
+{
   include('conexao.php');
 
   $params = array('action' => 'getInfAluno', 'matricula' => $matricula);
   $filename = "http://camerascomputex.ddns.net:8080/escola/ws_controller.php?" . http_build_query($params);
   $data = file_get_contents($filename);
   $array = json_decode($data, true);
-  if(!$array){
+  if (!$array) {
     return NULL;
   }
   $select = "SELECT idEndereços FROM endereços WHERE bairro LIKE '" . $array[0]["bairro"] . "' AND cep LIKE '" . $array[0]["cep"] . "' AND cidade LIKE '" . $array[0]["cidade"] . "' AND uf LIKE '" . $array[0]["uf"] . "';";
@@ -146,7 +190,7 @@ function getHorarios($matricula, $senha)
   mysqli_close($connect);
 }
 
-function getIdHorarios($matricula)
+function getHorariosById($matricula)
 {
   include('conexao.php');
   $idTurmas = getTurmasById($matricula);

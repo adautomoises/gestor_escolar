@@ -7,7 +7,7 @@ if(empty($_POST['usuario']) || empty($_POST['senha'])){
   header('Location: /gestor_escolar/login.php');
   exit;
 }
-getDados($_POST['usuario']);
+
 $usuario = mysqli_real_escape_string($connect, $_POST['usuario']);
 $senha = mysqli_real_escape_string($connect, $_POST['senha']);
 

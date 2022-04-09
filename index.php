@@ -5,13 +5,34 @@ include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
 
 $matricula = $_SESSION['usuario'];
 $senha = $_SESSION['senha'];
-// $responseAluno = getDados($matricula);
-// $responseEndereço = getEndereços($matricula);
-// if ($responseAluno['status'] == 'C') {
-//   $responseAluno['status'] = 'Cursando';
-// } else {
-//   $responseAluno['status'] = 'Desistente';
-// }
+$responseAluno = getInfo_alunos($matricula);
+$responseEndereço = getEndereços($matricula);
+$responseTurma = getTurmas($matricula);
+if ($responseAluno['status'] == 'C') {
+  $responseAluno['status'] = 'Cursando';
+} else {
+  $responseAluno['status'] = 'Desistente';
+}
+if ($responseAluno['sexo'] == 'M') {
+  $responseAluno['sexo'] = 'Masculino';
+} else {
+  $responseAluno['sexo'] = 'Feminino';
+}
+switch ($responseTurma['turno']) {
+  case 'M':
+    $responseTurma['turno'] = 'Manhã';
+    break;
+    case 'T':
+      $responseTurma['turno'] = 'Tarde';
+      break;
+      case 'N':
+        $responseTurma['turno'] = 'Noite';
+        break;
+      
+  default:
+    break;
+}
+
 ?>
 
 <!doctype html>
@@ -111,31 +132,31 @@ $senha = $_SESSION['senha'];
                         <div id="container-modal" class='container'>
                           <div id='row-modal-data' class='row'>
                 <?php
-                // echo
-                // " <div class='col-4'> <h6>Nome</h6>" . $responseAluno['nome'] . "</div>
-                //   <div class='col-4'> <h6>Matrícula</h6>" . $responseAluno['matricula'] . "</div>
-                //   <div class='col-4'> <h6>Nascimento</h6>" . $responseAluno['nascimento'] . "</div>
-                //   <div class='col-4'> <h6>Sexo</h6>" . $responseAluno['sexo'] . "</div>
-                //   <div class='col-4'> <h6>Situação</h6>" . $responseAluno['status'] . "</div> "
+                echo
+                " <div class='col-4'> <h6>Nome</h6>" . $responseAluno['nome'] . "</div>
+                  <div class='col-4'> <h6>Matrícula</h6>" . $responseAluno['matricula'] . "</div>
+                  <div class='col-4'> <h6>Nascimento</h6>" . $responseAluno['nascimento'] . "</div>
+                  <div class='col-4'> <h6>Sexo</h6>" . $responseAluno['sexo'] . "</div>
+                  <div class='col-4'> <h6>Situação</h6>" . $responseAluno['status'] . "</div> "
                 ?>
                       </div>
                       <div id='row-modal-address' class='row'>
                         <h5>Endereço</h5>
                 <?php
-                // echo
-                // " <div class='col-3'> <h6>CEP</h6>" . $responseEndereço['cep'] . "</div>
-                //   <div class='col-3'> <h6>Bairro</h6>" . $responseEndereço['bairro'] . "</div>
-                //   <div class='col-3'> <h6>Cidade</h6>" . $responseEndereço['cidade'] . "</div>
-                //   <div class='col-3'> <h6>UF</h6>" . $responseEndereço['UF'] . "</div> "
+                echo
+                " <div class='col-3'> <h6>CEP</h6>" . $responseEndereço['cep'] . "</div>
+                  <div class='col-3'> <h6>Bairro</h6>" . $responseEndereço['bairro'] . "</div>
+                  <div class='col-3'> <h6>Cidade</h6>" . $responseEndereço['cidade'] . "</div>
+                  <div class='col-3'> <h6>UF</h6>" . $responseEndereço['UF'] . "</div> "
                 ?>
                           </div>
                           <div id='row-modal-contact' class='row'>
                         <h5>Contatos</h5>
                 <?php
-              //   echo
-              // " <div class='col-3'> <h6>Telefone</h6>" . $responseAluno['telefone'] . "</div>
-              //   <div class='col-3'> <h6>Celular</h6>" . $responseAluno['celular'] . "</div>
-              //   <div class='col-3'> <h6>Email</h6>" . $responseAluno['email'] . "</div> "
+                echo
+              " <div class='col-3'> <h6>Telefone</h6>" . $responseAluno['telefone'] . "</div>
+                <div class='col-3'> <h6>Celular</h6>" . $responseAluno['celular'] . "</div>
+                <div class='col-3'> <h6>Email</h6>" . $responseAluno['email'] . "</div> "
 
                 ?>
                           </div>
@@ -153,8 +174,10 @@ $senha = $_SESSION['senha'];
               </div>
               <div class="col-5"><img class="card-img rounded w-50" src="./assets/images/logotipo.png"
                   alt="Foto do Aluno" />
-                <h5><?php echo $responseAluno['nome'] ?></h5>
-                <p>Turma: 2ºAno 1 | Turno: M</p>
+                <h5>
+                  <?php echo $responseAluno['nome'] ?>
+              </h5>
+                <p>Turma:  <?php echo $responseTurma['serie_longa'] ?> <?php echo $responseTurma['turma'] ?> | Turno: <?php echo $responseTurma['turno'] ?></p>
               </div>
             </div>
           </div>

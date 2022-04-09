@@ -6,7 +6,6 @@ include ('../assets/scripts/conexao.php');
 
 $matricula = $_SESSION['usuario'];
 $senha = $_SESSION['senha'];
-
 $grade = getHorarios($matricula, $senha);
 
 ?>
