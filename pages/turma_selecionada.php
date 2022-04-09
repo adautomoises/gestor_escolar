@@ -1,12 +1,28 @@
 <?php
 session_start();
 include('C:\xampp\htdocs\gestor_escolar\assets\scripts\valida_login.php');
-include ('../assets/scripts/funcoes.php');
-include ('../assets/scripts/utilites.php');
-include ('../assets/scripts/conexao.php');
+include('../assets/scripts/funcoes.php');
+include('../assets/scripts/utilites.php');
+include('../assets/scripts/conexao.php');
+
 
 $param = $_REQUEST;
 $responseAlunos = getInfo_alunosByParams($param);
+$param = getTurmasByParam($param);
+switch ($param['turno']) {
+  case 'M':
+    $param['turno'] = 'Manhã';
+    break;
+  case 'T':
+    $param['turno'] = 'Tarde';
+    break;
+  case 'N':
+    $param['turno'] = 'Noite';
+    break;
+
+  default:
+    break;
+}
 ?>
 
 <!doctype html>
@@ -24,7 +40,7 @@ $responseAlunos = getInfo_alunosByParams($param);
 </head>
 
 <body>
-<header>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="../index.php">
@@ -32,24 +48,37 @@ $responseAlunos = getInfo_alunosByParams($param);
           Colégio Computex
         </a>
         <!-- BOTÃO DE SAIR -->
-          <div class="navbar-nav ml-auto">
+        <div class="navbar-nav ml-auto">
           <a class="nav-link" href="/gestor_escolar/assets/scripts/logout.php">Sair</a>
-          </div>
+        </div>
       </div>
     </nav>
   </header>
+
   <div class="container" style="margin-top: 80px">
-   <div class="tab-content" id="pills-tabContent">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2"><?php echo $param['grau_longo'] ?> | <?php echo $param['serie_longa'] ?> | Turma <?php echo $param['turma'] ?> | Turno: <?php echo $param['turno'] ?>
+      </h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+          <form action="../assets/scripts/gerar_pdf.php" method="post">
+            <input type="submit" class="btn btn-outline-primary" value="Exportar como PDF">
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <table class="table">
           <tbody class="tabela">
-          <tr class="coluna">
+            <tr class="coluna">
               <th class="topico" scope='col'>
                 <div class="">Sequencia</div>
               </th>
               <?php
               for ($i = 0; $i < count($responseAlunos); $i++) {
-                echo "<td> <div class='turma'>".$responseAlunos[$i]['sequencia']."</div> </td>";
+                echo "<td> <div class='turma'>" . $responseAlunos[$i]['sequencia'] . "</div> </td>";
               }
               ?>
             </tr>
@@ -59,7 +88,7 @@ $responseAlunos = getInfo_alunosByParams($param);
               </th>
               <?php
               for ($i = 0; $i < count($responseAlunos); $i++) {
-                echo "<td> <div class='nome'>".$responseAlunos[$i]['nome']."</div> </td>";
+                echo "<td> <div class='nome'>" . $responseAlunos[$i]['nome'] . "</div> </td>";
               }
               ?>
             </tr>
@@ -69,7 +98,7 @@ $responseAlunos = getInfo_alunosByParams($param);
               </th>
               <?php
               for ($i = 0; $i < count($responseAlunos); $i++) {
-                echo "<td> <div class='turma'>".$responseAlunos[$i]['matricula']."</div> </td>";
+                echo "<td> <div class='turma'>" . $responseAlunos[$i]['matricula'] . "</div> </td>";
               }
               ?>
             </tr>
@@ -84,14 +113,14 @@ $responseAlunos = getInfo_alunosByParams($param);
                 } else {
                   $responseAlunos[$i]['status'] = 'Desistente';
                 }
-                echo "<td> <div class='turma'>".$responseAlunos[$i]['status']."</div> </td>";
+                echo "<td> <div class='turma'>" . $responseAlunos[$i]['status'] . "</div> </td>";
               }
               ?>
             </tr>
           </tbody>
         </table>
       </div>
-   </div>
+    </div>
   </div>
   <!-- Optional JavaScript; choose one of the two! -->
 

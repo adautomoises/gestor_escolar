@@ -105,6 +105,15 @@ function getTurmasById($matricula)
 
   return $row["idTurmas"];
   mysqli_close($connect);
+}function getTurmasByParam($param)
+{
+  include('conexao.php');
+  $select = "SELECT * FROM turmas WHERE codigo_escola LIKE '" . $param["escola"] . "' AND ano LIKE '" . $param["ano"] . "' AND grau_serie LIKE '" . $param["grau_serie"] . "' AND turno LIKE '" . $param["turno"] . "' AND turma LIKE '" . $param["turma"] . "';";
+  $result = mysqli_query($connect, $select);
+  $row = mysqli_fetch_assoc($result);
+
+  return $row;
+  mysqli_close($connect);
 }
 function getEndereços($matricula)
 {
